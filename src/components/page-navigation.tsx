@@ -128,7 +128,7 @@ function PageNavigation() {
 
   return (
     <>
-      <div className="absolute top-1/2 right-12 transform  -translate-y-1/2 flex flex-col  items-center">
+      <div className="hidden lg:flex absolute top-1/2 right-12 transform  -translate-y-1/2  flex-col  items-center">
         <NavigationArrow scrollContext={scrollContext} type="up" />
         <NavigationDots pathname={pathname} router={router} />
         <NavigationArrow scrollContext={scrollContext} type="down" />

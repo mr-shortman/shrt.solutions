@@ -7,6 +7,17 @@ import Spline from "@splinetool/react-spline";
 import { EmailListForm } from "../email-list-form";
 import { Computer } from "lucide-react";
 import FeatureCard from "../feature-card";
+import { Button } from "../ui/button";
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "../ui/drawer";
 
 const features = [
   {
@@ -82,14 +93,14 @@ const featureCardVariant = (idx: number) => ({
 function HeroPage() {
   return (
     <>
-      <div className="flex flex-col items-center w-full gap-8">
+      <div className="flex flex-col items-center w-full gap-4 lg:gap-8">
         <div className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl w-full text-center flex flex-col items-center gap-4">
           <motion.h1
             initial="hidden"
             exit="hidden"
             animate="visible"
             variants={titleVariant}
-            className="font-bold  text-3xl md:text-4xl lg:text-7xl xl:text-7xl"
+            className="font-bold  text-5xl sm:text-6xl md:text-4xl lg:text-5xl xl:text-7xl"
           >
             We make great digital products for
             <span className="text-primary">{" innovative "}</span>
@@ -100,7 +111,7 @@ function HeroPage() {
             exit="hidden"
             animate="visible"
             variants={descriptionVariant}
-            className="text-muted-foreground md:text-lg lg:text-xl max-w-2xl "
+            className="text-muted-foreground  sm:text-lg lg:text-xl max-w-2xl "
           >
             Get your desired design services from our talented designers, around
             the world at a reasonable cost
@@ -114,8 +125,24 @@ function HeroPage() {
         >
           <EmailListForm />
         </motion.div>
+        <div className="flex md:hidden flex-col gap-4 items-center sm:mt-10">
+          <FeatureCard {...features[0]} />
+          {/* <Button variant={"outline"}>Learn more</Button> */}
+          <Drawer>
+            <DrawerTrigger>Learn more</DrawerTrigger>
+            <DrawerContent className="p-4">
+              <ul className=" flex-wrap justify-center items-center gap-12 my-20 flex flex-col">
+                {features.map((feature, idx) => (
+                  <motion.li key={idx}>
+                    <FeatureCard {...feature} />
+                  </motion.li>
+                ))}
+              </ul>
+            </DrawerContent>
+          </Drawer>
+        </div>
 
-        <ul className="flex gap-6 mt-20">
+        <ul className=" flex-wrap justify-center gap-12 mt-20 hidden md:flex">
           {features.map((feature, idx) => (
             <motion.li
               initial="hidden"
@@ -124,7 +151,7 @@ function HeroPage() {
               variants={featureCardVariant(idx)}
               key={idx}
             >
-              <FeatureCard {...feature} animationDelay={idx * 300} />
+              <FeatureCard {...feature} />
             </motion.li>
           ))}
         </ul>

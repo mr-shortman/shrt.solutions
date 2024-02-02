@@ -62,13 +62,13 @@ function AboutPage() {
   };
 
   return (
-    <div className="container flex gap-20 items-center h-full mt-20 justify-between">
+    <div className="container flex flex-col lg:flex-row gap-20 items-center h-full mt-20 justify-between">
       <motion.div
         initial="hidden"
         exit="hidden"
         animate="visible"
         variants={imageVariant}
-        className="relative w-full border-2 h-96 rounded-2xl flex items-center justify-center"
+        className="relative w-full border-2 h-20 lg:h-96 rounded-2xl flex items-center justify-center"
       >
         <motion.div
           initial="hidden"

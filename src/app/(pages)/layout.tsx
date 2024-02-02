@@ -1,5 +1,4 @@
 import { PageNavigation } from "@/components";
-import { ThemeSwitch } from "@/components/theme-switch";
 import React from "react";
 import { LayoutProps } from "../layout";
 import { Navbar } from "@/components/layout";
@@ -11,10 +10,9 @@ function Layout({ children }: LayoutProps) {
       <>
         <Navbar />
         <PageNavigation />
-        <main className="flex w-full flex-col items-center justify-between px-12">
+        <main className="flex w-full flex-col items-center justify-between px-4 md:px-12">
           {children}
         </main>
-        <ThemeSwitch className="absolute right-12 bottom-12" />
       </>
     </ScrollProvider>
   );

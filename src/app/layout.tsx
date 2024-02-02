@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Roboto, Darker_Grotesque } from "next/font/google";
 import "./globals.css";
-import {
-  ThemeProvider,
-  PreviousPathnameProvider,
-} from "@/components/providers";
 import PageAnimatePresence from "@/components/hoc/page-animate-presence";
+import { PreviousPathnameProvider } from "@/components/providers";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["greek"] });
@@ -34,16 +31,7 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
         )}
       >
         <PageAnimatePresence>
-          <PreviousPathnameProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-            </ThemeProvider>
-          </PreviousPathnameProvider>
+          <PreviousPathnameProvider>{children}</PreviousPathnameProvider>
         </PageAnimatePresence>
       </body>
     </html>
